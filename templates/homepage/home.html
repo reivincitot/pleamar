@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="titulo-pagina">
+        <h2>Historia</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde quidem incidunt animi velit soluta accusantium
+            dignissimos nihil ullam quaerat veritatis commodi quis, adipisci nam accusamus iste voluptatum explicabo
+            dolores autem.</p>
+    </div>
+    <div class="forms">
+        <form action="" method="get">
+            <button type="submit" class="fa fa-plus" title="Agregar competencia">Agregar participación</button>
+        </form>
+    </div>
+    <button id="toggleTorneosBtn" class="btn btn-primary">Lista de participación</button>
+    <div class="torneo-list" id="torneoList" style="display: none;">
+        <h3>Lista de competencias</h3>
+        <ul>
+            {% for torneo in torneos %}
+                <li>{{torneo.nombre}} -{{torneo.puesto}} </li>
+                {% empty %}
+                <li>No hay torneos guardados.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<script>
+    document.getElementById('toggleTorneosBtn').addEventListener('click', function() {
+        var torneoList = document.getElementById('torneoList');
+        if (torneoList.style.display === 'none') {
+            torneoList.style.display = 'block';
+        } else {
+            torneoList.style.display = 'none';
+        }
+    });
+</script>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% url 'home' as home %}
+{% url 'login' as login %}
+{% url 'register' as register %}
+{% url 'logout' as logout %}
+
+{% load static %}
+<nav class="navbar">
+    <div class="container navbar">
+        <ul class="navbar-nav">
+            <li class="navbar-item">
+                <a href="{{home}}" class="nav-link">Inicio
+                    <span class="fa-solid fa-house"></span>
+                </a>
+            </li>
+            <li class="navbar-item">
+                <a href="#" class="nav-link">Galería
+                    <span class="fa-solid fa-images"></span>
+                </a>
+            </li>
+            <li class="navbar-item">
+                <a href="#" class="nav-link">Calendario
+                    <span class="fa-solid fa-calendar-days"></span>
+                </a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="navbar-item">
+                <a href="{{logout}}" class="nav-link">Cerrar sesión
+                    <span class="fa-solid fa-right-from-bracket"></span>
+                </a>
+            </li>
+            {% else %}
+            <li class="navbar-item">
+                <a href="{{login}}" class="nav-link">Iniciar sesión
+                    <span class="fa-solid fa-right-to-bracket"></span>
+                </a>
+            </li>
+            <li class="navbar-item">
+                <a href="{{register}}" class="nav-link">
+                    Registrarse
+                    <span class="fa-solid fa-address-card"></span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
